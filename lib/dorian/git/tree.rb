@@ -1,3 +1,5 @@
+require 'shellwords'
+
 module Dorian
   module Git
     class Tree
@@ -10,7 +12,7 @@ module Dorian
       def self.list(dir, start: true)
         puts dir if start
 
-        `git ls-tree master "#{dir}" --name-only`.split("\n").sort.each do |line|
+        `git ls-tree HEAD #{Shellwords.escape(dir)} --name-only`.split("\n").sort.each do |line|
           split = line.split('/')
           puts format(line)
           list(line + '/', start: false) if File.directory?(line)
