@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+
+require 'dorian/git/tree'
+Dorian::Git::Tree.run
