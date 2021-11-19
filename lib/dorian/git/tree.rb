@@ -17,7 +17,7 @@ module Dorian
         key = ARGV.first || "."
         files = git_ls_files(key)
         values = group(files)
-        key = "#{key}/" if values.any? && key != "."
+        key = "#{key}/" if values.any? && key != "." && key[-1] != "/"
         puts key
         values.each.with_index do |(value_key, value_values), value_index|
           print(

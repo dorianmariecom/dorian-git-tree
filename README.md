@@ -2,36 +2,21 @@
 
 Lists your files and directories in your git repository as a tree
 
-e.g. `git tree config/`
+e.g. `git tree`
 
 ```
-config/
-└── application.rb
-└── boot.rb
-└── cable.yml
-└── credentials.yml.enc
-└── database.yml
-└── environment.rb
-└── environments
-│  └── development.rb
-│  └── production.rb
-│  └── test.rb
-└── importmap.rb
-└── initializers
-│  └── assets.rb
-│  └── backtrace_silencers.rb
-│  └── content_security_policy.rb
-│  └── filter_parameter_logging.rb
-│  └── inflections.rb
-│  └── mime_types.rb
-│  └── money.rb
-│  └── permissions_policy.rb
-│  └── wrap_parameters.rb
-└── locales
-│  └── en.yml
-└── puma.rb
-└── routes.rb
-└── storage.yml
+.
+├── .gitignore
+├── .prettierrc
+├── LICENSE
+├── README.md
+├── bin/
+│    └── git-tree
+├── dorian-git-tree.gemspec
+└── lib/
+    └── dorian/
+        └── git/
+            └── tree.rb
 ```
 
 ### Install
@@ -50,8 +35,7 @@ gem install dorian
 
 ```bash
 git tree
-
 git tree app/views
-
-git tree db
+git tree db/
+git tree app/models/user.rb
 ```
