@@ -1,10 +1,10 @@
-require 'shellwords'
+require "shellwords"
 
 module Dorian
   module Git
     class Tree
       def self.run
-        list(ARGV.first || '.')
+        list(ARGV.first || ".")
       end
 
       private
@@ -15,16 +15,16 @@ module Dorian
         `git ls-tree HEAD #{Shellwords.escape(dir)} --name-only`.split("\n")
           .sort
           .each do |line|
-            split = line.split('/')
+            split = line.split("/")
             puts format(line)
-            list(line + '/', start: false) if File.directory?(line)
+            list(line + "/", start: false) if File.directory?(line)
           end
       end
 
       def self.format(file)
-        split = file.split('/')
+        split = file.split("/")
         return file unless split.size > 1
-        '│  ' * (split.size - 2) + '└── ' + split.last
+        "│  " * (split.size - 2) + "└── " + split.last
       end
     end
   end
