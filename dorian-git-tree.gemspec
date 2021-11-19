@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "dorian-git-tree"
-  s.version = "0.1.2"
+  s.version = "0.2.0"
   s.summary =
     "Lists your files and directories in your git repository as a tree"
   s.description = s.summary + "\n\n" + "e.g. `git-tree config/`"
@@ -10,4 +10,5 @@ Gem::Specification.new do |s|
   s.executables << "git-tree"
   s.homepage = "https://github.com/dorianmariefr/git-tree"
   s.license = "MIT"
+  s.metadata = { "rubygems_mfa_required" => "true" }
 end

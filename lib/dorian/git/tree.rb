@@ -3,28 +3,62 @@ require "shellwords"
 module Dorian
   module Git
     class Tree
+      SPACE = "    "
+      RIGHT = "└── "
+      DOWN = "│    "
+      DOWN_AND_RIGHT = "├── "
+
       def self.run
-        list(ARGV.first || ".")
+        if ARGV[0] == "--help" || ARGV[0] == "-h" || ARGV.size > 1
+          puts "USAGE: git tree [PATH]"
+          exit
+        end
+
+        key = ARGV.first || "."
+        files = git_ls_files(key)
+        values = group(files)
+        key = "#{key}/" if values.any? && key != "."
+        puts key
+        values.each.with_index do |(value_key, value_values), value_index|
+          print(
+            key: value_key,
+            values: value_values,
+            index: value_index,
+            size: values.size,
+          )
+        end
       end
 
-      private
+      def self.git_ls_files(path)
+        `#{["git", "ls-files", path].compact.shelljoin}`.split("\n")
+      end
 
-      def self.list(dir, start: true)
-        puts dir if start
-
-        `git ls-tree HEAD #{Shellwords.escape(dir)} --name-only`.split("\n")
-          .sort
-          .each do |line|
-            split = line.split("/")
-            puts format(line)
-            list(line + "/", start: false) if File.directory?(line)
+      def self.group(files)
+        files
+          .group_by { |file| file.split("/").first }
+          .transform_values do |values|
+            group(
+              values
+                .map { |value| value.split("/")[1..-1].join("/") }
+                .reject(&:empty?)
+            )
           end
       end
 
-      def self.format(file)
-        split = file.split("/")
-        return file unless split.size > 1
-        "│  " * (split.size - 2) + "└── " + split.last
+      def self.print(key:, values:, index: 0, size: 1, prefix: "")
+        key = "#{key}/" if values.any?
+        last = index + 1 == size
+        right_prefix = last ? RIGHT : DOWN_AND_RIGHT
+        puts prefix + right_prefix + key
+        values.each.with_index do |(value_key, value_values), value_index|
+          print(
+            key: value_key,
+            values: value_values,
+            index: value_index,
+            size: values.size,
+            prefix: prefix + (last ? SPACE : DOWN)
+          )
+        end
       end
     end
   end
