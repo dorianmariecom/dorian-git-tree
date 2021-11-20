@@ -15,10 +15,17 @@ module Dorian
         end
 
         key = ARGV.first || "."
-        files = git_ls_files(key)
+
+        files = git_ls_files(key).map do |file|
+          ARGV.first ? file.sub(ARGV.first, "") : file
+        end
+
         values = group(files)
+
         key = "#{key}/" if values.any? && key != "." && key[-1] != "/"
+
         puts key
+
         values.each.with_index do |(value_key, value_values), value_index|
           print(
             key: value_key,
@@ -30,7 +37,9 @@ module Dorian
       end
 
       def self.git_ls_files(path)
-        `#{["git", "ls-files", path].compact.shelljoin}`.split("\n")
+        result = `#{["git", "ls-files", path].compact.shelljoin}`.split("\n")
+        exit $?.exitstatus if $?.exitstatus > 0
+        result
       end
 
       def self.group(files)

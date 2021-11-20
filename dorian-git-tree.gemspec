@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = "dorian-git-tree"
-  s.version = "0.2.2"
+  s.version = "0.3.0"
   s.summary =
     "Lists your files and directories in your git repository as a tree"
   s.description = s.summary + "\n\n" + "e.g. `git-tree config/`"
