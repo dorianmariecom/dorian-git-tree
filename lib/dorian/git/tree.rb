@@ -5,7 +5,7 @@ module Dorian
     class Tree
       SPACE = "    "
       RIGHT = "└── "
-      DOWN = "│    "
+      DOWN = "│   "
       DOWN_AND_RIGHT = "├── "
 
       def self.run
