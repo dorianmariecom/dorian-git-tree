@@ -16,9 +16,10 @@ module Dorian
 
         key = ARGV.first || "."
 
-        files = git_ls_files(key).map do |file|
-          ARGV.first ? file.sub(ARGV.first, "") : file
-        end
+        files =
+          git_ls_files(key).map do |file|
+            ARGV.first ? file.sub(ARGV.first, "") : file
+          end
 
         values = group(files)
 
@@ -31,7 +32,7 @@ module Dorian
             key: value_key,
             values: value_values,
             index: value_index,
-            size: values.size,
+            size: values.size
           )
         end
       end
