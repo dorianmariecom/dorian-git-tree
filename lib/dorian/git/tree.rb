@@ -1,3 +1,7 @@
+# frozen_string_literal: true
+
+require "English"
+
 require "shellwords"
 
 module Dorian
@@ -39,7 +43,7 @@ module Dorian
 
       def self.git_ls_files(path)
         result = `#{["git", "ls-files", path].compact.shelljoin}`.split("\n")
-        exit $?.exitstatus if $?.exitstatus > 0
+        exit $CHILD_STATUS.exitstatus if $CHILD_STATUS.exitstatus.positive?
         result
       end
 
@@ -49,7 +53,7 @@ module Dorian
           .transform_values do |values|
             group(
               values
-                .map { |value| value.split("/")[1..-1].join("/") }
+                .map { |value| value.split("/")[1..].join("/") }
                 .reject(&:empty?)
             )
           end
