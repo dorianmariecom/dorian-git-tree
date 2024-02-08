@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email = "dorian@dorianmarie.fr"
   s.files = ["lib/dorian/git/tree.rb"]
   s.executables << "git-tree"
-  s.homepage = "https://github.com/dorianmariefr/git-tree"
+  s.homepage = "https://github.com/dorianmariecom/git-tree"
   s.license = "MIT"
   s.metadata = { "rubygems_mfa_required" => "true" }
 end
