@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
     "Lists your files and directories in your git repository as a tree"
   s.description = "#{s.summary}\n\ne.g. `git-tree config/`"
   s.authors = ["Dorian Marié"]
-  s.email = "dorian@dorianmarie.fr"
+  s.email = "dorian@dorianmarie.com"
   s.files = ["lib/dorian/git/tree.rb"]
   s.executables << "git-tree"
   s.homepage = "https://github.com/dorianmariecom/git-tree"
