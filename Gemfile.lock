@@ -9,11 +9,25 @@ GEM
   specs:
     addressable (2.8.6)
       public_suffix (>= 2.0.2, < 6.0)
+    diff-lcs (1.5.1)
     git (1.19.1)
       addressable (~> 2.8)
       rchardet (~> 1.8)
     public_suffix (5.0.4)
     rchardet (1.8.0)
+    rspec (3.13.0)
+      rspec-core (~> 3.13.0)
+      rspec-expectations (~> 3.13.0)
+      rspec-mocks (~> 3.13.0)
+    rspec-core (3.13.0)
+      rspec-support (~> 3.13.0)
+    rspec-expectations (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-mocks (3.13.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.13.0)
+    rspec-support (3.13.1)
 
 PLATFORMS
   arm64-darwin-23
@@ -21,6 +35,7 @@ PLATFORMS
 
 DEPENDENCIES
   dorian-git-tree!
+  rspec
 
 RUBY VERSION
    ruby 3.3.0p0
