@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dorian-git-tree"
-  s.version = "0.4.1"
+  s.version = "0.4.2"
   s.summary =
     "Lists your files and directories in your git repository as a tree"
   s.description = "#{s.summary}\n\ne.g. `git-tree config/`"
@@ -14,4 +14,6 @@ Gem::Specification.new do |s|
   s.license = "MIT"
   s.metadata = { "rubygems_mfa_required" => "true" }
   s.add_dependency "git", "~> 1"
+
+  s.required_ruby_version = ">= 3.3.0"
 end

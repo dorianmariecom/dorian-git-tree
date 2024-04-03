@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dorian-git-tree (0.4.1)
+    dorian-git-tree (0.4.2)
       git (~> 1)
 
 GEM
