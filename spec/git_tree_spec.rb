@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "spec_helper"
 require "securerandom"
 require "tmpdir"
@@ -17,8 +19,20 @@ RSpec.describe "git-tree" do
       expect(`#{pwd}/bin/git-tree`).to include(File.basename(js_tempfile))
     end
   ensure
-    File.delete(ruby_tempfile) rescue nil
-    File.delete(js_tempfile) rescue nil
-    Dir.delete(tempdir) rescue nil
+    begin
+      File.delete(ruby_tempfile)
+    rescue StandardError
+      nil
+    end
+    begin
+      File.delete(js_tempfile)
+    rescue StandardError
+      nil
+    end
+    begin
+      Dir.delete(tempdir)
+    rescue StandardError
+      nil
+    end
   end
 end
