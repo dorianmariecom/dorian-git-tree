@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.homepage = "https://github.com/dorianmariecom/dorian-git-tree"
   s.license = "MIT"
   s.metadata = { "rubygems_mfa_required" => "true" }
-  s.add_dependency "git", "~> 1"
+  s.add_dependency "git", ">= 1", "< 3"
 
   s.required_ruby_version = ">= 3.3.0"
 end
