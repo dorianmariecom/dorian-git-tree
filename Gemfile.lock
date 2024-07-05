@@ -2,7 +2,7 @@ PATH
   remote: .
   specs:
     dorian-git-tree (0.4.4)
-      git (~> 1)
+      git
 
 GEM
   remote: https://rubygems.org/
@@ -26,8 +26,10 @@ GEM
     connection_pool (2.4.1)
     diff-lcs (1.5.1)
     drb (2.2.1)
-    git (1.19.1)
+    git (2.1.1)
+      activesupport (>= 5.0)
       addressable (~> 2.8)
+      process_executer (~> 1.1)
       rchardet (~> 1.8)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
@@ -39,6 +41,7 @@ GEM
     parser (3.3.3.0)
       ast (~> 2.4.1)
       racc
+    process_executer (1.1.0)
     public_suffix (6.0.0)
     racc (1.8.0)
     rack (3.1.6)
