@@ -3,9 +3,8 @@
 Gem::Specification.new do |s|
   s.name = "dorian-git-tree"
   s.version = "0.5.1"
-  s.summary =
-    "Lists your files and directories in your git repository as a tree"
-  s.description = "#{s.summary}\n\ne.g. `git-tree config/`"
+  s.summary = "lists files and directories in git as a tree"
+  s.description = s.summary
   s.authors = ["Dorian Marié"]
   s.email = "dorian@dorianmarie.com"
   s.files = ["bin/git-tree"]
