@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = "dorian-git-tree"
-  s.version = "0.5.2"
+  s.version = File.read("VERSION").strip
   s.summary = "lists files and directories in git as a tree"
   s.description = s.summary
   s.authors = ["Dorian Marié"]
