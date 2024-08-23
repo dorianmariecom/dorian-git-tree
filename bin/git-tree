@@ -4,15 +4,7 @@
 require "git"
 require "dorian/arguments"
 
-parsed =
-  Dorian::Arguments.parse(
-    version: {
-      alias: :v
-    },
-    help: {
-      alias: :h
-    }
-  )
+parsed = Dorian::Arguments.parse(version: { alias: :v }, help: { alias: :h })
 
 abort parsed.help if parsed.options.help
 
@@ -57,9 +49,10 @@ end
 
 keys = parsed.arguments.any? ? parsed.arguments : ["."]
 keys.each do |key|
-  files = git_ls_files(key).map do |file|
-    parsed.arguments.any? ? file.sub(key, "") : file
-  end
+  files =
+    git_ls_files(key).map do |file|
+      parsed.arguments.any? ? file.sub(key, "") : file
+    end
   values = group(files)
   key = "#{key}/" if values.any? && key != "." && key[-1] != "/"
   puts key
