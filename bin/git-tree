@@ -2,6 +2,23 @@
 # frozen_string_literal: true
 
 require "git"
+require "dorian/arguments"
+
+parsed =
+  Dorian::Arguments.parse(
+    version: {
+      alias: :v
+    },
+    help: {
+      alias: :h
+    }
+  )
+
+abort parsed.help if parsed.options.help
+
+if parsed.options.version
+  abort File.read(File.expand_path("../../VERSION", __FILE__))
+end
 
 SPACE = "    "
 RIGHT = "└── "
@@ -38,27 +55,20 @@ def print(key:, values:, index: 0, size: 1, prefix: "")
   end
 end
 
-if ARGV[0] == "--help" || ARGV[0] == "-h" || ARGV.size > 1
-  puts "USAGE: git tree [PATH]"
-  exit
-end
-
-key = ARGV.first || "."
-
-files =
-  git_ls_files(key).map { |file| ARGV.first ? file.sub(ARGV.first, "") : file }
-
-values = group(files)
-
-key = "#{key}/" if values.any? && key != "." && key[-1] != "/"
-
-puts key
-
-values.each.with_index do |(value_key, value_values), value_index|
-  print(
-    key: value_key,
-    values: value_values,
-    index: value_index,
-    size: values.size
-  )
+keys = parsed.arguments.any? ? parsed.arguments : ["."]
+keys.each do |key|
+  files = git_ls_files(key).map do |file|
+    parsed.arguments.any? ? file.sub(key, "") : file
+  end
+  values = group(files)
+  key = "#{key}/" if values.any? && key != "." && key[-1] != "/"
+  puts key
+  values.each.with_index do |(value_key, value_values), value_index|
+    print(
+      key: value_key,
+      values: value_values,
+      index: value_index,
+      size: values.size
+    )
+  end
 end
