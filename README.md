@@ -1,41 +1,41 @@
 # `dorian-git-tree`
 
-Lists your files and directories in your git repository as a tree
+Print tracked git files as a tree.
 
-e.g. `git tree`
-
-```
-.
-├── .gitignore
-├── .prettierrc
-├── LICENSE
-├── README.md
-├── bin/
-│    └── git-tree
-├── dorian-git-tree.gemspec
-└── lib/
-    └── dorian/
-        └── git/
-            └── tree.rb
-```
-
-### Install
+## Install
 
 ```bash
 gem install dorian-git-tree
 ```
 
-Or as part of my other gems:
+Also included in the aggregate gem:
 
 ```bash
 gem install dorian
 ```
 
-### Usage
+## Usage
 
 ```bash
-git tree
-git tree app/views
-git tree db/
-git tree app/models/user.rb
+git-tree [path ...]
+```
+
+Run `git-tree -h` for generated option details and `git-tree -v` for the installed version.
+
+## Notes
+
+- Pass paths to limit the tree to specific files or directories.
+
+## Examples
+
+### Show the whole repo
+
+```bash
+git-tree
+```
+
+### Show one area
+
+```bash
+git-tree app/models
 ```
