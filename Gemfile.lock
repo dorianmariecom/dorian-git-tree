@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    dorian-git-tree (2.0.0)
+    dorian-git-tree (2.0.1)
       dorian-arguments
       git
 
