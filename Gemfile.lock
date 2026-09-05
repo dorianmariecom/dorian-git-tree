@@ -2,8 +2,8 @@ PATH
   remote: .
   specs:
     dorian-git-tree (2.0.1)
-      dorian-arguments
-      git
+      dorian-arguments (>= 2.0.1, < 3)
+      git (>= 5.4.1, < 6)
 
 GEM
   remote: https://rubygems.org/
